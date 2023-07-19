@@ -19,4 +19,12 @@ public class Payload {
                 "    \"language\": \"French-IN\"\n" +
                 "}" ;
     }
+
+    public static String PutPlace(){
+        return "{\n" +
+                "\"place_id\":\"9aed419720f983be2a65298ceb73c548\",\n" +
+                "\"address\":\"70 Summer walk, USA\",\n" +
+                "\"key\":\"qaclick123\"\n" +
+                "}";
+    }
 }
