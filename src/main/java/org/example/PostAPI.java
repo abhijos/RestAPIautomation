@@ -5,7 +5,7 @@ import io.restassured.RestAssured;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.equalTo;
 
-public class Basics {
+public class PostAPI {
     public static void main(String[] args){
         //validating if add place api is working fine
         //3 principles for writing rest api tests
