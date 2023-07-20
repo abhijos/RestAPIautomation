@@ -4,6 +4,7 @@ import files.Payload;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 
+import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -48,5 +49,23 @@ public class ExtractResponse_postAPI {
                 .assertThat()
                 .statusCode(200)
                 .body("msg",equalTo("Address successfully updated"));
+
+        //Get Place
+        String getResponse = given().log().all()
+                .queryParams("key","qaclick123","place_id",""+placeId+"")
+                .when()
+                .get("maps/api/place/get/json")
+                .then()
+                .assertThat()
+                .statusCode(200)
+                .extract()
+                .response()
+                .asString();
+
+        System.out.println("Extracted get response is:" + getResponse);
+        JsonPath jsonPathGetResponse = new JsonPath(getResponse);
+        String getLatitudeResponse = jsonPathGetResponse.getString("location");
+        System.out.println(getLatitudeResponse);
+
     }
 }
